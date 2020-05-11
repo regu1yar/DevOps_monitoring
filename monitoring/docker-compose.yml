@@ -22,14 +22,30 @@ services:
             - backend
         volumes:
             - my_folder:/folder2
-    worker:
-        build: .
+    metrics_worker:
+        build: ./metrics
         networks:
             - backend
         volumes:
-            - my_folder:/folder
+            - my_folder:/metrics_folder
+    selenium:
+        image: selenium/standalone-chrome:3.141.59-oxygen
+        ports:
+            - 4444:4444
+        volumes:
+            - /dev/shm:/dev/shm
+        networks:
+            - browsers
+    predictions_worker:
+        build: ./predictions
+        networks:
+            - backend
+            - browsers
+        volumes:
+            - my_folder:/predictions_folder
 networks:
     frontend:
     backend:
+    browsers:
 volumes:
     my_folder:
