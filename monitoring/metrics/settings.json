@@ -1,0 +1,11 @@
+{
+  "api_token": "MERAD5FSPGESIM92",
+  "metrics": {
+    "BTC": [
+      "USD",
+      "EUR"
+    ]
+  },
+  "graphite_host": "graphite",
+  "base_url": "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE"
+}
